@@ -34,7 +34,38 @@ details summary{list-style:none;cursor:pointer;font-weight:750;display:flex;just
 <section class="card"><div class="count-label">Zjedzone mandarynki</div><div class="count-number" id="total">0</div><div class="count-caption" id="milestone">Pierwsza mandarynka czeka!</div>
 <button class="mandarin-button" id="add" aria-label="Dodaj zjedzoną mandarynkę"><svg viewBox="0 0 240 240" role="img" aria-label="Mandarynka"><defs><radialGradient id="fruit" cx="34%" cy="24%" r="78%"><stop stop-color="#ffcb67"/><stop offset=".28" stop-color="#ff9e24"/><stop offset=".72" stop-color="#f47712"/><stop offset="1" stop-color="#d94b0c"/></radialGradient><linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80b95a"/><stop offset="1" stop-color="#23683c"/></linearGradient></defs><ellipse cx="120" cy="211" rx="72" ry="13" fill="#00180d" opacity=".35"/><path d="M120 43 C108 24 126 13 144 16 C137 30 130 39 120 43Z" fill="#704528"/><path d="M124 35 C145 4 178 14 186 28 C163 39 144 42 124 35Z" fill="url(#leaf)" stroke="#194e2e" stroke-width="2"/><path d="M128 35 Q155 24 178 24" stroke="#b3d47a" stroke-width="2" fill="none"/><path d="M120 40 C98 29 65 47 49 70 C25 104 37 157 57 185 C75 210 101 214 120 209 C140 215 166 207 185 183 C205 156 212 110 190 76 C174 49 144 31 120 40Z" fill="url(#fruit)" stroke="#e66a0d" stroke-width="2"/><path d="M120 43 C106 52 104 67 105 80 M120 43 C135 52 139 66 136 80" stroke="#d95e0a" stroke-width="3" opacity=".65" fill="none"/><path d="M57 92 C43 119 51 157 69 176" stroke="#ffd07a" stroke-width="7" stroke-linecap="round" opacity=".38" fill="none"/><path d="M120 43 C115 52 116 61 120 66 C124 61 125 52 120 43Z" fill="#ffbd4e"/></svg></button>
 <div class="tap-hint">Dotknij mandarynki 🍊</div><div class="tap-sub">Każde kliknięcie = jedna zjedzona sztuka</div><div class="row"><button class="secondary minus" id="minus">−1 · Cofnij</button><button class="secondary" id="todayBtn">Dzisiejszy wynik</button></div></section>
-<section class="card"><h2 class="section-title">Twoje tempo</h2><div class="stats"><div class="stat"><div class="stat-label">Dzisiaj</div><div class="stat-value" id="todayCount">0</div><div class="stat-unit">mandarynek</div></div><div class="stat"><div class="stat-label">Na godzinę</div><div class="stat-value" id="perHour">—</div><div class="stat-unit">średnio od startu</div></div><div class="stat"><div class="stat-label">Na minutę</div><div class="stat-value" id="perMinute">—</div><div class="stat-unit">średnio od startu</div></div><div class="stat"><div class="stat-label">Na sekundę</div><div class="stat-value" id="perSecond">—</div><div class="stat-unit">średnio od startu</div></div></div><p class="small-note" id="since">Tempo zacznie być liczone od pierwszej mandarynki.</p></section>
+<section class="card">
+<h2 class="section-title">Dzisiejszy wynik</h2>
+<div style="text-align:center;padding:8px 0 4px">
+  <div id="todayCount" style="font-size:48px;font-weight:850;line-height:1.1;font-variant-numeric:tabular-nums">0</div>
+  <div style="color:var(--muted);font-size:13px;margin-top:5px">mandarynek zjedzonych dzisiaj</div>
+</div>
+<p class="small-note" id="dailyMessage" style="text-align:center">Każda mandarynka się liczy 🍊</p>
+</section>
+<section class="card">
+<h2 class="section-title">Raport dla szwagra 📣</h2>
+<p class="small-note" style="margin-top:0">Pochwal się wynikiem Kubstera.</p>
+<button class="primary" id="shareReport">Zdaj Raport</button>
+</section>
+<section class="card">
+<h2 class="section-title">Wyzwanie do Wigilii 🎯</h2>
+<div id="goalSetup">
+  <p class="small-note" style="margin-top:0">Kubster, jaki wynik chcesz wykręcić do Świąt?</p>
+  <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
+    <input id="goalInput" type="number" min="1" step="1" inputmode="numeric" placeholder="Np. 200" style="flex:1;min-width:0">
+    <button class="primary" id="setGoal" style="width:auto;margin-top:0;white-space:nowrap">Ustal cel</button>
+  </div>
+</div>
+<div id="goalProgress" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:6px 0 10px">
+    <div><span style="color:var(--muted);font-size:12px">Twój cel</span><div style="font-size:27px;font-weight:850"><span id="goalValue">0</span> 🍊</div></div>
+    <div style="text-align:right"><span style="color:var(--muted);font-size:12px">Postęp</span><div id="goalPercent" style="font-size:23px;font-weight:850">0%</div></div>
+  </div>
+  <div style="height:14px;border-radius:99px;background:#001d1466;overflow:hidden;border:1px solid #ffffff20"><div id="goalBar" style="height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#f47712,#f4c76b);transition:width .25s"></div></div>
+  <p class="small-note" id="goalMessage"></p>
+  <button class="secondary" id="editGoal" style="margin-top:10px">Zmień cel</button>
+</div>
+</section>
 <section class="card"><h2 class="section-title">Historia dzienna</h2><div id="history" class="history-list"></div><div class="history-tools"><button class="secondary" id="more">Pokaż starsze dni</button><button class="secondary" id="less">Pokaż mniej</button></div></section>
 <section class="card"><h2 class="section-title">Ile zostało do Wigilii?</h2><div class="countdown"><div class="timebox"><strong id="days">--</strong><span>dni</span></div><div class="timebox"><strong id="hours">--</strong><span>godzin</span></div><div class="timebox"><strong id="minutes">--</strong><span>minut</span></div><div class="timebox"><strong id="seconds">--</strong><span>sekund</span></div></div><p class="small-note" id="targetNote">Odliczanie do 24 grudnia, godz. 17:00.</p></section>
 <section class="card"><details><summary>Dodaj wcześniejsze mandarynki</summary><div class="inside"><p class="small-note">Wpisanie wcześniejszych danych zastąpi dotychczasowy licznik.</p><label for="pastCount">Liczba zjedzonych mandarynek</label><input id="pastCount" type="number" min="0" step="1" inputmode="numeric" placeholder="np. 12"><label for="pastDate">Data i godzina rozpoczęcia pomiaru</label><input id="pastDate" type="datetime-local"><button class="primary" id="savePast">Zapisz wcześniejsze dane</button></div></details></section>
@@ -44,9 +75,9 @@ details summary{list-style:none;cursor:pointer;font-weight:750;display:flex;just
 'use strict';
 const KEY='mandarynki-do-swiat-v1';
 const $=id=>document.getElementById(id);
-let state={events:[],baseline:null},historyLimit=7,toastTimer;
+let state={events:[],baseline:null,goal:null},historyLimit=7,toastTimer;
 function load(){
- try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.events))return x;}catch(e){}
+ try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.events))return {...x,goal:x.goal||null};}catch(e){}
  return {events:[],baseline:null};
 }
 function save(){
@@ -67,12 +98,19 @@ function renderHistory(){
  $('more').style.display=days.length>historyLimit?'':'none';$('less').style.display=historyLimit>7?'':'none';
 }
 function render(){
- const n=total(),now=Date.now(),events=allEvents();$('total').textContent=fmt(n,0);
- const today=new Date();$('todayCount').textContent=fmt(events.filter(e=>new Date(e.t).toDateString()===today.toDateString()).reduce((a,e)=>a+(Number(e.delta)||0),0),0);
+ const n=total(),events=allEvents();
+ $('total').textContent=fmt(n,0);
+ const today=new Date();
+ const daily=events.filter(e=>new Date(e.t).toDateString()===today.toDateString()).reduce((a,e)=>a+(Number(e.delta)||0),0);
+ $('todayCount').textContent=fmt(daily,0);
  $('milestone').textContent=n===0?'Pierwsza mandarynka czeka!':n===1?'Pierwsza z wielu. Dobra robota!':n<10?'Świąteczny licznik ruszył!':n<50?'Robi się mandarynkowo!':'Mistrz świątecznej witaminy C!';
- const starts=events.filter(e=>e.delta>0).map(e=>e.t),start=starts.length?Math.min(...starts):null;
- if(n>0&&start){const sec=Math.max((now-start)/1000,1);$('perSecond').textContent=fmt(n/sec,5);$('perMinute').textContent=fmt(n/(sec/60),3);$('perHour').textContent=fmt(n/(sec/3600),2);$('since').textContent='Średnie tempo od '+new Date(start).toLocaleString('pl-PL',{dateStyle:'medium',timeStyle:'short'})+'.';}
- else{$('perSecond').textContent=$('perMinute').textContent=$('perHour').textContent='—';$('since').textContent='Tempo zacznie być liczone od pierwszej mandarynki.';}
+ $('dailyMessage').textContent=daily===0?'Dzień dopiero się zaczyna — czas na pierwszą mandarynkę! 🍊':daily===1?'Pierwsza dzisiejsza zaliczona! 🍊':daily<5?'Dobry początek, Kubster! 🍊':'Kubster jest dziś na mandarynkowej fali! 🍊';
+ if(state.goal && Number(state.goal)>0){
+   $('goalSetup').style.display='none';$('goalProgress').style.display='';
+   const goal=Number(state.goal), pct=Math.min(100,Math.round(n/goal*100));
+   $('goalValue').textContent=fmt(goal,0);$('goalPercent').textContent=pct+'%';$('goalBar').style.width=pct+'%';
+   $('goalMessage').textContent=n>=goal?'Cel zaliczony, Kubster! Mandarynkowa legenda. 🏆':'Jeszcze '+fmt(goal-n,0)+' mandarynek do celu. Jedziesz!';
+ } else {$('goalSetup').style.display='';$('goalProgress').style.display='none';}
  renderHistory();
 }
 function countdown(){const now=new Date();let t=new Date(now.getFullYear(),11,24,17,0,0);if(now>=t)t=new Date(now.getFullYear()+1,11,24,17,0,0);let ms=t-now;const d=Math.floor(ms/86400000);ms-=d*86400000;const h=Math.floor(ms/3600000);ms-=h*3600000;const m=Math.floor(ms/60000);ms-=m*60000;const s=Math.floor(ms/1000);$('days').textContent=d;$('hours').textContent=String(h).padStart(2,'0');$('minutes').textContent=String(m).padStart(2,'0');$('seconds').textContent=String(s).padStart(2,'0');$('targetNote').textContent='Do 24 grudnia, godz. 17:00 · '+t.getFullYear()+'.';}
@@ -82,6 +120,25 @@ $('todayBtn').addEventListener('click',()=>showToast('Dzisiaj: '+$('todayCount')
 $('more').addEventListener('click',()=>{historyLimit+=7;renderHistory();});$('less').addEventListener('click',()=>{historyLimit=7;renderHistory();});
 const localISO=d=>new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);$('pastDate').value=localISO(new Date());
 $('savePast').addEventListener('click',()=>{const count=Number.parseInt($('pastCount').value,10),date=$('pastDate').value;if(!Number.isFinite(count)||count<0){showToast('Podaj liczbę 0 lub większą');return;}if(!date){showToast('Wybierz datę i godzinę');return;}const t=new Date(date).getTime();if(!Number.isFinite(t)||t>Date.now()){showToast('Data nie może być z przyszłości');return;}if(!confirm('Zastąpić dotychczasowy licznik wcześniejszymi danymi?'))return;state={events:[],baseline:{count,start:t}};save();render();showToast('Zapisano wcześniejsze dane');});
+$('setGoal').addEventListener('click',()=>{
+ const g=Number.parseInt($('goalInput').value,10);
+ if(!Number.isFinite(g)||g<1){showToast('Wpisz cel większy od zera');return;}
+ state.goal=g;save();render();showToast('Cel ustawiony. Do dzieła, Kubster! 🍊');
+});
+$('editGoal').addEventListener('click',()=>{
+ $('goalInput').value=state.goal||'';$('goalSetup').style.display='';$('goalProgress').style.display='none';$('goalInput').focus();
+});
+$('shareReport').addEventListener('click',async()=>{
+ const events=allEvents(),now=new Date();
+ const today=events.filter(e=>new Date(e.t).toDateString()===now.toDateString()).reduce((a,e)=>a+(Number(e.delta)||0),0);
+ const message='Dziś ojebalem już '+today+' mandarynek. A w sumie ojebalem '+total()+'.';
+ if(navigator.share){
+   try{await navigator.share({title:'Raport Kubstera 🍊',text:message});return;}catch(e){if(e&&e.name==='AbortError')return;}
+ }
+ try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(message);showToast('Raport skopiowany — wklej go szwagrowi!');return;}}catch(e){}
+ const ta=document.createElement('textarea');ta.value=message;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+ try{document.execCommand('copy');showToast('Raport skopiowany — wklej go szwagrowi!');}catch(e){window.prompt('Skopiuj raport dla szwagra:',message);}ta.remove();
+});
 function refresh(){state=load();render();countdown();}
 state=load();render();countdown();$('status').textContent='Zapis lokalny aktywny';
 window.addEventListener('pageshow',refresh);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});window.addEventListener('storage',refresh);setInterval(()=>{if(!document.hidden){render();countdown();}},1000);
