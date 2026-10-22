@@ -151,6 +151,8 @@ footer{text-align:center;color:#9db9a5;font-size:11px;margin:22px 8px 0;line-hei
   const $ = id => document.getElementById(id);
   let state = load();
   let toastTimer;
+  let historyLimit = 7;
+  let storageReady = true;
   function load() {
     try {
       const saved = JSON.parse(localStorage.getItem(KEY));
@@ -277,7 +279,7 @@ footer{text-align:center;color:#9db9a5;font-size:11px;margin:22px 8px 0;line-hei
   // Domyślna data w formularzu: teraz, zaokrąglone do minuty.
   const localISO = d => new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);
   $('pastDate').value = localISO(new Date());
-  countdown(); setInterval(countdown,1000); setInterval(()=>{ if (storageReady) render(); },15000);\n  initializeStorage();
+  render(); countdown(); setInterval(countdown,1000); setInterval(render,15000);
 })();
 </script>
 </body>
