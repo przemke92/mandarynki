@@ -2,299 +2,80 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#123b2b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mandarynki">
 <title>Mandarynki do Świąt 🍊</title>
 <style>
-:root{color-scheme:dark;--pine:#123b2b;--pine2:#1b5039;--cream:#fff4d9;--gold:#f4c76b;--red:#b93435;--muted:#c9d8c9}
-*{box-sizing:border-box}
-body{margin:0;min-height:100svh;color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#34704a 0%,var(--pine) 55%,#09271e 100%);padding:calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));}
-body:before{content:"✦  ·  ❄  ·  ✧  ·  ❄  ·  ✦";position:fixed;top:12px;left:0;right:0;text-align:center;letter-spacing:12px;color:#ffffff30;font-size:18px;pointer-events:none}
-main{width:min(100%,520px);margin:0 auto}
-header{text-align:center;margin:18px 0 22px}
-.kicker{text-transform:uppercase;letter-spacing:3px;font-size:11px;color:var(--gold);font-weight:800}
-h1{font-family:Georgia,serif;font-weight:700;font-size:clamp(32px,8vw,43px);line-height:1.05;margin:10px 0 8px}
-.subtitle{margin:0;color:var(--muted);font-size:14px}
+:root{color-scheme:dark;--pine:#123b2b;--cream:#fff4d9;--gold:#f4c76b;--muted:#c9d8c9}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;color:var(--cream);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#34704a 0%,var(--pine) 55%,#09271e 100%);padding:calc(18px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))}
+main{width:min(100%,520px);margin:auto}header{text-align:center;margin:18px 0 22px}.kicker{text-transform:uppercase;letter-spacing:3px;font-size:11px;color:var(--gold);font-weight:800}h1{font-family:Georgia,serif;font-size:clamp(32px,8vw,43px);line-height:1.05;margin:10px 0 8px}.subtitle{color:var(--muted);font-size:14px}
 .card{background:#ffffff0c;border:1px solid #ffffff1c;border-radius:24px;padding:20px;margin:14px 0;box-shadow:0 12px 34px #00150d30;backdrop-filter:blur(8px)}
-.count-label{text-align:center;color:var(--muted);font-size:13px;letter-spacing:1.2px;text-transform:uppercase}
-.count-number{text-align:center;font-size:70px;line-height:1.05;font-weight:850;letter-spacing:-3px;margin:7px 0 3px;font-variant-numeric:tabular-nums}
-.count-caption{text-align:center;color:var(--gold);font-size:14px}
-.mandarin-button{display:block;border:0;background:transparent;margin:10px auto 0;padding:0;width:min(70vw,245px);aspect-ratio:1;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .12s;filter:drop-shadow(0 15px 12px #00180d66)}
-.mandarin-button:active{transform:scale(.94)}
-.mandarin-button svg{width:100%;height:100%;overflow:visible}
-.tap-hint{text-align:center;color:var(--cream);font-weight:750;margin:4px 0 0}
-.tap-sub{text-align:center;color:var(--muted);font-size:12px;margin-top:5px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-button.secondary{width:100%;border:1px solid #ffffff2a;background:#ffffff0c;color:var(--cream);border-radius:14px;padding:13px 10px;font-weight:750;font-size:14px;cursor:pointer}
-button.secondary:active{background:#ffffff20}
-button.minus{border-color:#e9a5a54d;color:#ffd0c9}
-.section-title{font-family:Georgia,serif;font-size:20px;margin:0 0 14px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:#001d1438;border:1px solid #ffffff12;border-radius:16px;padding:14px}
-.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);line-height:1.35}
-.stat-value{font-size:25px;font-weight:800;margin-top:7px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.stat-unit{font-size:11px;color:var(--muted);margin-top:2px}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
-.timebox{text-align:center;background:#001d1438;border-radius:14px;padding:12px 2px}
-.timebox strong{display:block;font-size:24px;font-variant-numeric:tabular-nums}
-.timebox span{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
-.small-note{font-size:12px;color:var(--muted);line-height:1.5;margin:12px 0 0}
-details summary{list-style:none;cursor:pointer;font-weight:750;display:flex;justify-content:space-between;align-items:center;gap:12px}
-details summary::-webkit-details-marker{display:none}
-details summary:after{content:"＋";color:var(--gold);font-size:20px}
-details[open] summary:after{content:"−"}
-details .inside{padding-top:16px}
-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}
-input{width:100%;border:1px solid #ffffff2b;background:#082a20;color:var(--cream);border-radius:12px;padding:13px;font:inherit;font-size:16px}
-button.primary{border:0;background:var(--gold);color:#2b2919;border-radius:12px;padding:13px 16px;font-weight:850;width:100%;margin-top:12px;font-size:14px;cursor:pointer}
-.danger{color:#ffc5bc!important}
-footer{text-align:center;color:#9db9a5;font-size:11px;margin:22px 8px 0;line-height:1.6}
-
-.storage-status{text-align:center;font-size:11px;color:var(--muted);margin:12px 0 0}.storage-status.storage-ok{color:#bfe8b8}\n.history-list{display:flex;flex-direction:column;gap:8px}
-.history-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:12px 13px;background:#001d1438;border:1px solid #ffffff12;border-radius:13px}
-.history-date{font-weight:750;font-size:13px}
-.history-weekday{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:3px;text-transform:capitalize}
-.history-count{text-align:right;font-size:20px;font-weight:850;font-variant-numeric:tabular-nums}
-.history-count small{display:block;font-size:10px;font-weight:500;color:var(--muted)}
-.history-empty{font-size:13px;color:var(--muted);line-height:1.5}
-.history-tools{display:flex;gap:8px;margin-top:12px}
-.history-tools button{flex:1}
-.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--cream);color:#173728;padding:11px 16px;border-radius:99px;font-weight:750;font-size:13px;box-shadow:0 8px 30px #0005;transition:.2s;white-space:nowrap}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(min-width:440px){.card{padding:23px}.count-number{font-size:78px}}
-</style>
-</head>
-<body>
-<main>
-<header>
-  <div class="kicker">Świąteczna misja 2026</div>
-  <h1>Mandarynki<br>do Świąt</h1>
-  <p class="subtitle">Małe owoce. Wielkie odliczanie. 🎄</p>
-</header>
-
-<section class="card" aria-label="Licznik mandarynek">
-  <div class="count-label">Zjedzone mandarynki</div>
-  <div class="count-number" id="total">0</div>
-  <div class="count-caption" id="milestone">Pierwsza mandarynka czeka!</div>
-  <button class="mandarin-button" id="add" aria-label="Dodaj zjedzoną mandarynkę" title="Kliknij, aby dodać mandarynkę">
-    <svg viewBox="0 0 240 240" role="img" aria-label="Ilustracja soczystej mandarynki">
-      <defs>
-        <radialGradient id="fruit" cx="34%" cy="24%" r="78%"><stop offset="0" stop-color="#ffcb67"/><stop offset=".28" stop-color="#ff9e24"/><stop offset=".72" stop-color="#f47712"/><stop offset="1" stop-color="#d94b0c"/></radialGradient>
-        <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80b95a"/><stop offset="1" stop-color="#23683c"/></linearGradient>
-      </defs>
-      <ellipse cx="120" cy="211" rx="72" ry="13" fill="#00180d" opacity=".35"/>
-      <path d="M120 43 C108 24 126 13 144 16 C137 30 130 39 120 43Z" fill="#704528"/>
-      <path d="M124 35 C145 4 178 14 186 28 C163 39 144 42 124 35Z" fill="url(#leaf)" stroke="#194e2e" stroke-width="2"/>
-      <path d="M128 35 Q155 24 178 24" stroke="#b3d47a" stroke-width="2" fill="none" opacity=".8"/>
-      <path d="M120 40 C98 29 65 47 49 70 C25 104 37 157 57 185 C75 210 101 214 120 209 C140 215 166 207 185 183 C205 156 212 110 190 76 C174 49 144 31 120 40Z" fill="url(#fruit)" stroke="#e66a0d" stroke-width="2"/>
-      <path d="M120 43 C106 52 104 67 105 80 M120 43 C135 52 139 66 136 80" stroke="#d95e0a" stroke-width="3" opacity=".65" fill="none"/>
-      <path d="M57 92 C43 119 51 157 69 176" stroke="#ffd07a" stroke-width="7" stroke-linecap="round" opacity=".38" fill="none"/>
-      <path d="M120 43 C115 52 116 61 120 66 C124 61 125 52 120 43Z" fill="#ffbd4e"/>
-      <circle cx="82" cy="75" r="3" fill="#ffe1a1" opacity=".7"/><circle cx="69" cy="88" r="2" fill="#ffe1a1" opacity=".6"/>
-    </svg>
-  </button>
-  <div class="tap-hint">Dotknij mandarynki 🍊</div>
-  <div class="tap-sub">Każde kliknięcie = jedna zjedzona sztuka</div>
-  <div class="row">
-    <button class="secondary minus" id="minus">−1 · Cofnij</button>
-    <button class="secondary" id="today">Dzisiejszy wynik</button>
-  </div>
-</section>
-
-<section class="card">
-  <h2 class="section-title">Twoje tempo</h2>
-  <div class="stats">
-    <div class="stat"><div class="stat-label">Dzisiaj</div><div class="stat-value" id="todayCount">0</div><div class="stat-unit">mandarynek</div></div>
-    <div class="stat"><div class="stat-label">Na godzinę</div><div class="stat-value" id="perHour">—</div><div class="stat-unit">średnio od startu</div></div>
-    <div class="stat"><div class="stat-label">Na minutę</div><div class="stat-value" id="perMinute">—</div><div class="stat-unit">średnio od startu</div></div>
-    <div class="stat"><div class="stat-label">Na sekundę</div><div class="stat-value" id="perSecond">—</div><div class="stat-unit">średnio od startu</div></div>
-  </div>
-  <p class="small-note" id="since">Tempo zacznie być liczone od pierwszej mandarynki.</p>
-</section>
-
-<section class="card">
-  <h2 class="section-title">Ile zostało do Wigilii?</h2>
-  <div class="countdown">
-    <div class="timebox"><strong id="days">--</strong><span>dni</span></div>
-    <div class="timebox"><strong id="hours">--</strong><span>godzin</span></div>
-    <div class="timebox"><strong id="minutes">--</strong><span>minut</span></div>
-    <div class="timebox"><strong id="seconds">--</strong><span>sekund</span></div>
-  </div>
-  <p class="small-note" id="targetNote">Odliczanie do 24 grudnia, godz. 17:00.</p>
-</section>
-
-<section class="card">
-  <details>
-    <summary>Dodaj wcześniejsze mandarynki</summary>
-    <div class="inside">
-      <p class="small-note">Jeśli liczysz też mandarynki zjedzone przed uruchomieniem apki, wpisz ich liczbę i moment, od którego chcesz liczyć tempo. Ta operacja ustawi nową bazę licznika.</p>
-      <label for="pastCount">Liczba zjedzonych mandarynek</label>
-      <input id="pastCount" type="number" min="0" step="1" inputmode="numeric" placeholder="np. 12">
-      <label for="pastDate">Data i godzina pierwszej mandarynki</label>
-      <input id="pastDate" type="datetime-local">
-      <button class="primary" id="savePast">Zapisz wcześniejsze dane</button>
-      <p class="small-note">Data jest zapisywana lokalnie na tym urządzeniu. Wpisanie wcześniejszych danych zastępuje dotychczasową historię licznika.</p>
-    </div>
-  </details>
-</section>
-
-<div id="storageStatus" class="storage-status">Przywracanie zapisanych danych…</div>
-<footer>Twoje dane zostają na tym telefonie. Nie ma konta ani synchronizacji.<br>Dodaj stronę do ekranu początkowego, aby mieć ją zawsze pod ręką. 🎅</footer>
-</main>
-<div class="toast" id="toast" role="status"></div>
+.count-label{text-align:center;color:var(--muted);font-size:13px;letter-spacing:1.2px;text-transform:uppercase}.count-number{text-align:center;font-size:70px;line-height:1.05;font-weight:850;letter-spacing:-3px;margin:7px 0 3px;font-variant-numeric:tabular-nums}.count-caption{text-align:center;color:var(--gold);font-size:14px}
+.mandarin-button{display:block;border:0;background:transparent;margin:10px auto 0;padding:0;width:min(70vw,245px);aspect-ratio:1;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:transform .12s}.mandarin-button:active{transform:scale(.94)}.mandarin-button svg{width:100%;height:100%}.tap-hint{text-align:center;font-weight:750;margin:4px 0 0}.tap-sub{text-align:center;color:var(--muted);font-size:12px;margin-top:5px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}button.secondary{width:100%;border:1px solid #ffffff2a;background:#ffffff0c;color:var(--cream);border-radius:14px;padding:13px 10px;font-weight:750;font-size:14px;cursor:pointer}.minus{color:#ffd0c9!important}
+.section-title{font-family:Georgia,serif;font-size:20px;margin:0 0 14px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#001d1438;border:1px solid #ffffff12;border-radius:16px;padding:14px}.stat-label{font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}.stat-value{font-size:25px;font-weight:800;margin-top:7px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.stat-unit{font-size:11px;color:var(--muted);margin-top:2px}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.timebox{text-align:center;background:#001d1438;border-radius:14px;padding:12px 2px}.timebox strong{display:block;font-size:24px;font-variant-numeric:tabular-nums}.timebox span{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}.small-note{font-size:12px;color:var(--muted);line-height:1.5;margin:12px 0 0}
+details summary{list-style:none;cursor:pointer;font-weight:750;display:flex;justify-content:space-between;gap:12px}details summary::-webkit-details-marker{display:none}details summary:after{content:"＋";color:var(--gold);font-size:20px}details[open] summary:after{content:"−"}details .inside{padding-top:16px}label{display:block;font-size:12px;color:var(--muted);margin:12px 0 6px}input{width:100%;border:1px solid #ffffff2b;background:#082a20;color:var(--cream);border-radius:12px;padding:13px;font:inherit;font-size:16px}button.primary{border:0;background:var(--gold);color:#2b2919;border-radius:12px;padding:13px 16px;font-weight:850;width:100%;margin-top:12px;font-size:14px}
+.history-list{display:flex;flex-direction:column;gap:8px}.history-row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:12px 13px;background:#001d1438;border:1px solid #ffffff12;border-radius:13px}.history-date{font-weight:750;font-size:13px}.history-weekday{display:block;color:var(--muted);font-size:11px;margin-top:3px;text-transform:capitalize}.history-count{text-align:right;font-size:20px;font-weight:850}.history-count small{display:block;font-size:10px;font-weight:500;color:var(--muted)}.history-tools{display:flex;gap:8px;margin-top:12px}.history-tools button{flex:1}
+.status{text-align:center;font-size:11px;color:#bfe8b8;margin:12px 0 0}footer{text-align:center;color:#9db9a5;font-size:11px;margin:22px 8px 0;line-height:1.6}.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--cream);color:#173728;padding:11px 16px;border-radius:99px;font-weight:750;font-size:13px;transition:.2s;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+</style></head><body><main>
+<header><div class="kicker">Świąteczna misja 2026</div><h1>Mandarynki<br>do Świąt</h1><p class="subtitle">Małe owoce. Wielkie odliczanie. 🎄</p></header>
+<section class="card"><div class="count-label">Zjedzone mandarynki</div><div class="count-number" id="total">0</div><div class="count-caption" id="milestone">Pierwsza mandarynka czeka!</div>
+<button class="mandarin-button" id="add" aria-label="Dodaj zjedzoną mandarynkę"><svg viewBox="0 0 240 240" role="img" aria-label="Mandarynka"><defs><radialGradient id="fruit" cx="34%" cy="24%" r="78%"><stop stop-color="#ffcb67"/><stop offset=".28" stop-color="#ff9e24"/><stop offset=".72" stop-color="#f47712"/><stop offset="1" stop-color="#d94b0c"/></radialGradient><linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80b95a"/><stop offset="1" stop-color="#23683c"/></linearGradient></defs><ellipse cx="120" cy="211" rx="72" ry="13" fill="#00180d" opacity=".35"/><path d="M120 43 C108 24 126 13 144 16 C137 30 130 39 120 43Z" fill="#704528"/><path d="M124 35 C145 4 178 14 186 28 C163 39 144 42 124 35Z" fill="url(#leaf)" stroke="#194e2e" stroke-width="2"/><path d="M128 35 Q155 24 178 24" stroke="#b3d47a" stroke-width="2" fill="none"/><path d="M120 40 C98 29 65 47 49 70 C25 104 37 157 57 185 C75 210 101 214 120 209 C140 215 166 207 185 183 C205 156 212 110 190 76 C174 49 144 31 120 40Z" fill="url(#fruit)" stroke="#e66a0d" stroke-width="2"/><path d="M120 43 C106 52 104 67 105 80 M120 43 C135 52 139 66 136 80" stroke="#d95e0a" stroke-width="3" opacity=".65" fill="none"/><path d="M57 92 C43 119 51 157 69 176" stroke="#ffd07a" stroke-width="7" stroke-linecap="round" opacity=".38" fill="none"/><path d="M120 43 C115 52 116 61 120 66 C124 61 125 52 120 43Z" fill="#ffbd4e"/></svg></button>
+<div class="tap-hint">Dotknij mandarynki 🍊</div><div class="tap-sub">Każde kliknięcie = jedna zjedzona sztuka</div><div class="row"><button class="secondary minus" id="minus">−1 · Cofnij</button><button class="secondary" id="todayBtn">Dzisiejszy wynik</button></div></section>
+<section class="card"><h2 class="section-title">Twoje tempo</h2><div class="stats"><div class="stat"><div class="stat-label">Dzisiaj</div><div class="stat-value" id="todayCount">0</div><div class="stat-unit">mandarynek</div></div><div class="stat"><div class="stat-label">Na godzinę</div><div class="stat-value" id="perHour">—</div><div class="stat-unit">średnio od startu</div></div><div class="stat"><div class="stat-label">Na minutę</div><div class="stat-value" id="perMinute">—</div><div class="stat-unit">średnio od startu</div></div><div class="stat"><div class="stat-label">Na sekundę</div><div class="stat-value" id="perSecond">—</div><div class="stat-unit">średnio od startu</div></div></div><p class="small-note" id="since">Tempo zacznie być liczone od pierwszej mandarynki.</p></section>
+<section class="card"><h2 class="section-title">Historia dzienna</h2><div id="history" class="history-list"></div><div class="history-tools"><button class="secondary" id="more">Pokaż starsze dni</button><button class="secondary" id="less">Pokaż mniej</button></div></section>
+<section class="card"><h2 class="section-title">Ile zostało do Wigilii?</h2><div class="countdown"><div class="timebox"><strong id="days">--</strong><span>dni</span></div><div class="timebox"><strong id="hours">--</strong><span>godzin</span></div><div class="timebox"><strong id="minutes">--</strong><span>minut</span></div><div class="timebox"><strong id="seconds">--</strong><span>sekund</span></div></div><p class="small-note" id="targetNote">Odliczanie do 24 grudnia, godz. 17:00.</p></section>
+<section class="card"><details><summary>Dodaj wcześniejsze mandarynki</summary><div class="inside"><p class="small-note">Wpisanie wcześniejszych danych zastąpi dotychczasowy licznik.</p><label for="pastCount">Liczba zjedzonych mandarynek</label><input id="pastCount" type="number" min="0" step="1" inputmode="numeric" placeholder="np. 12"><label for="pastDate">Data i godzina rozpoczęcia pomiaru</label><input id="pastDate" type="datetime-local"><button class="primary" id="savePast">Zapisz wcześniejsze dane</button></div></details></section>
+<div class="status" id="status">Zapis lokalny gotowy</div><footer>Dane są zapisywane na tym urządzeniu. Nie ma konta ani synchronizacji.<br>Dodaj stronę do ekranu początkowego, aby mieć ją zawsze pod ręką. 🎅</footer></main><div class="toast" id="toast"></div>
 <script>
-(() => {
-  const KEY = 'mandarynki-do-swiat-v1';
-  const $ = id => document.getElementById(id);
-  let state = load();
-  let toastTimer;
-  let historyLimit = 7;
-  let storageReady = true;
-  function load() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(KEY));
-      if (saved && Array.isArray(saved.events)) return saved;
-    } catch(e) {}
-    return {events: [], baseline: null};
-  }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) { showToast('Nie udało się zapisać danych'); } }
-  function showToast(msg) {
-    $('toast').textContent = msg; $('toast').classList.add('show');
-    clearTimeout(toastTimer); toastTimer = setTimeout(()=>$('toast').classList.remove('show'), 1800);
-  }
-  function addOne() {
-    state.events.push({t: Date.now(), delta: 1});
-    save(); render(); if (navigator.vibrate) navigator.vibrate(12);
-  }
-  function minusOne() {
-    // Cofnij ostatnie dodanie, jeśli istnieje; nie pozwól zejść poniżej zera.
-    for (let i=state.events.length-1; i>=0; i--) {
-      if (state.events[i].delta > 0) { state.events.splice(i,1); save(); render(); showToast('Cofnięto ostatnie kliknięcie'); return; }
-    }
-    if (state.baseline && state.baseline.count > 0) {
-      state.baseline.count--; save(); render(); showToast('Odjęto jedną sztukę z wcześniejszych danych'); return;
-    }
-    showToast('Licznik jest już na zerze');
-  }
-  function allEvents() {
-    const list = state.events.slice();
-    if (state.baseline && state.baseline.count > 0 && state.baseline.start) {
-      list.push({t: state.baseline.start, delta: state.baseline.count, baseline: true});
-    }
-    return list;
-  }
-  function total() {
-    return (state.baseline ? Number(state.baseline.count)||0 : 0) + state.events.reduce((s,e)=>s+(Number(e.delta)||0),0);
-  }
-  function fmt(n, max=2) {
-    if (!Number.isFinite(n)) return '—';
-    return n.toLocaleString('pl-PL',{maximumFractionDigits:max});
-  }
-  function render() {
-    const now = Date.now(), count = total();
-    $('total').textContent = fmt(count,0);
-    $('todayCount').textContent = fmt(allEvents().filter(e=>new Date(e.t).toDateString()===new Date(now).toDateString()).reduce((s,e)=>s+e.delta,0),0);
-    $('milestone').textContent = count===0 ? 'Pierwsza mandarynka czeka!' : count===1 ? 'Pierwsza z wielu. Dobra robota!' : count<10 ? 'Świąteczny licznik ruszył!' : count<50 ? 'Robi się mandarynkowo!' : 'Mistrz świątecznej witaminy C!';
-    const starts = allEvents().filter(e=>e.delta>0).map(e=>e.t);
-    const start = starts.length ? Math.min(...starts) : null;
-    if (count > 0 && start) {
-      const elapsed = Math.max((now-start)/1000,1);
-      $('perSecond').textContent = fmt(count/elapsed,5);
-      $('perMinute').textContent = fmt(count/(elapsed/60),3);
-      $('perHour').textContent = fmt(count/(elapsed/3600),2);
-      $('since').textContent = 'Średnie tempo od ' + new Date(start).toLocaleString('pl-PL',{dateStyle:'medium',timeStyle:'short'}) + '.';
-    } else {
-      $('perSecond').textContent = $('perMinute').textContent = $('perHour').textContent = '—';
-      $('since').textContent = 'Tempo zacznie być liczone od pierwszej mandarynki.';
-    }
-    renderHistory();
-  }
-
-  function renderHistory() {
-    const container = $('history');
-    const events = allEvents();
-    const today = new Date();
-    const firstTimestamp = events.length ? Math.min(...events.map(e => e.t)) : null;
-    if (!firstTimestamp) {
-      container.innerHTML = '<div class="history-empty">Historia pojawi się po dodaniu pierwszej mandarynki albo po wprowadzeniu wcześniejszych danych.</div>';
-      $('showMoreHistory').style.display = 'none';
-      $('hideHistory').style.display = 'none';
-      return;
-    }
-    const counts = new Map();
-    events.forEach(e => {
-      const key = new Date(e.t).toLocaleDateString('sv-SE');
-      counts.set(key, (counts.get(key) || 0) + (Number(e.delta) || 0));
-    });
-    const firstDay = new Date(firstTimestamp);
-    firstDay.setHours(0,0,0,0);
-    const todayStart = new Date(today);
-    todayStart.setHours(0,0,0,0);
-    const days = [];
-    for (let d = new Date(todayStart); d >= firstDay; d.setDate(d.getDate()-1)) {
-      const key = d.toLocaleDateString('sv-SE');
-      days.push({date:new Date(d), key, count:counts.get(key)||0});
-    }
-    const visible = days.slice(0, historyLimit);
-    container.innerHTML = visible.map(item => {
-      const dateText = item.date.toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'});
-      const weekday = item.date.toLocaleDateString('pl-PL',{weekday:'long'});
-      return `<div class="history-row"><div><div class="history-date">${dateText}</div><span class="history-weekday">${weekday}</span></div><div class="history-count">${fmt(item.count,0)}<small>mandarynek</small></div></div>`;
-    }).join('');
-    $('showMoreHistory').style.display = days.length > historyLimit ? '' : 'none';
-    $('hideHistory').style.display = historyLimit > 7 ? '' : 'none';
-  }
-  function countdown() {
-    const now = new Date();
-    let target = new Date(now.getFullYear(),11,24,17,0,0,0);
-    if (now >= target) target = new Date(now.getFullYear()+1,11,24,17,0,0,0);
-    let diff = Math.max(0,target-now.getTime());
-    const d=Math.floor(diff/86400000); diff-=d*86400000;
-    const h=Math.floor(diff/3600000); diff-=h*3600000;
-    const m=Math.floor(diff/60000); diff-=m*60000;
-    const s=Math.floor(diff/1000);
-    $('days').textContent=d; $('hours').textContent=String(h).padStart(2,'0');
-    $('minutes').textContent=String(m).padStart(2,'0'); $('seconds').textContent=String(s).padStart(2,'0');
-    $('targetNote').textContent = 'Do 24 grudnia, godz. 17:00 · ' + target.getFullYear() + '.';
-  }
-  $('add').addEventListener('click',addOne);
-  $('minus').addEventListener('click',minusOne);
-  $('today').addEventListener('click',()=>showToast('Dzisiaj: '+$('todayCount').textContent+' mandarynek'));
-  $('showMoreHistory').addEventListener('click',()=>{ historyLimit += 7; renderHistory(); });
-  $('hideHistory').addEventListener('click',()=>{ historyLimit = 7; renderHistory(); });
-  $('savePast').addEventListener('click',()=>{
-    const count = Number.parseInt($('pastCount').value,10);
-    const dateValue = $('pastDate').value;
-    if (!Number.isFinite(count) || count<0) { showToast('Podaj liczbę 0 lub większą'); return; }
-    if (!dateValue) { showToast('Wybierz datę i godzinę'); return; }
-    const t = new Date(dateValue).getTime();
-    if (!Number.isFinite(t) || t>Date.now()) { showToast('Data nie może być z przyszłości'); return; }
-    if (!confirm('Zastąpić dotychczasowy licznik wcześniejszymi danymi?')) return;
-    state = {events: [], baseline: {count, start:t}};
-    save(); render(); showToast('Zapisano wcześniejsze dane');
-  });
-  // Domyślna data w formularzu: teraz, zaokrąglone do minuty.
-  const localISO = d => new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);
-  $('pastDate').value = localISO(new Date());
-
-  // Odtwórz licznik także po ponownym wejściu na stronę lub przywróceniu jej z pamięci Safari.
-  function restoreAndRender() {
-    const restored = load();
-    if (restored && Array.isArray(restored.events)) state = restored;
-    render();
-    countdown();
-  }
-  restoreAndRender();
-  window.addEventListener('pageshow', restoreAndRender);
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') restoreAndRender();
-  });
-  setInterval(countdown, 1000);
-  setInterval(() => { if (document.visibilityState === 'visible') render(); }, 15000);
+(function(){
+'use strict';
+const KEY='mandarynki-do-swiat-v1';
+const $=id=>document.getElementById(id);
+let state={events:[],baseline:null},historyLimit=7,toastTimer;
+function load(){
+ try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.events))return x;}catch(e){}
+ return {events:[],baseline:null};
+}
+function save(){
+ try{localStorage.setItem(KEY,JSON.stringify(state));$('status').textContent='Zapisano na tym urządzeniu';}
+ catch(e){$('status').textContent='Nie udało się zapisać danych';showToast('Zapis niedostępny w tej przeglądarce');}
+}
+function showToast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),1800);}
+function allEvents(){let a=state.events.slice();if(state.baseline&&state.baseline.count>0&&state.baseline.start)a.push({t:state.baseline.start,delta:state.baseline.count});return a;}
+function total(){return (state.baseline?Number(state.baseline.count)||0:0)+state.events.reduce((n,e)=>n+(Number(e.delta)||0),0);}
+function fmt(n,d=2){return Number.isFinite(n)?n.toLocaleString('pl-PL',{maximumFractionDigits:d}):'—';}
+function renderHistory(){
+ const box=$('history'),events=allEvents(),now=new Date();
+ if(!events.length){box.innerHTML='<div class="small-note">Historia pojawi się po dodaniu pierwszej mandarynki.</div>';$('more').style.display='none';$('less').style.display='none';return;}
+ const counts={};events.forEach(e=>{const d=new Date(e.t);const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');counts[k]=(counts[k]||0)+(Number(e.delta)||0);});
+ const first=new Date(Math.min(...events.map(e=>e.t)));first.setHours(0,0,0,0);const cur=new Date();cur.setHours(0,0,0,0);let days=[];
+ for(let d=new Date(cur);d>=first;d.setDate(d.getDate()-1)){const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');days.push({date:new Date(d),count:counts[k]||0});}
+ box.innerHTML=days.slice(0,historyLimit).map(x=>'<div class="history-row"><div><div class="history-date">'+x.date.toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'})+'</div><span class="history-weekday">'+x.date.toLocaleDateString('pl-PL',{weekday:'long'})+'</span></div><div class="history-count">'+fmt(x.count,0)+'<small>mandarynek</small></div></div>').join('');
+ $('more').style.display=days.length>historyLimit?'':'none';$('less').style.display=historyLimit>7?'':'none';
+}
+function render(){
+ const n=total(),now=Date.now(),events=allEvents();$('total').textContent=fmt(n,0);
+ const today=new Date();$('todayCount').textContent=fmt(events.filter(e=>new Date(e.t).toDateString()===today.toDateString()).reduce((a,e)=>a+(Number(e.delta)||0),0),0);
+ $('milestone').textContent=n===0?'Pierwsza mandarynka czeka!':n===1?'Pierwsza z wielu. Dobra robota!':n<10?'Świąteczny licznik ruszył!':n<50?'Robi się mandarynkowo!':'Mistrz świątecznej witaminy C!';
+ const starts=events.filter(e=>e.delta>0).map(e=>e.t),start=starts.length?Math.min(...starts):null;
+ if(n>0&&start){const sec=Math.max((now-start)/1000,1);$('perSecond').textContent=fmt(n/sec,5);$('perMinute').textContent=fmt(n/(sec/60),3);$('perHour').textContent=fmt(n/(sec/3600),2);$('since').textContent='Średnie tempo od '+new Date(start).toLocaleString('pl-PL',{dateStyle:'medium',timeStyle:'short'})+'.';}
+ else{$('perSecond').textContent=$('perMinute').textContent=$('perHour').textContent='—';$('since').textContent='Tempo zacznie być liczone od pierwszej mandarynki.';}
+ renderHistory();
+}
+function countdown(){const now=new Date();let t=new Date(now.getFullYear(),11,24,17,0,0);if(now>=t)t=new Date(now.getFullYear()+1,11,24,17,0,0);let ms=t-now;const d=Math.floor(ms/86400000);ms-=d*86400000;const h=Math.floor(ms/3600000);ms-=h*3600000;const m=Math.floor(ms/60000);ms-=m*60000;const s=Math.floor(ms/1000);$('days').textContent=d;$('hours').textContent=String(h).padStart(2,'0');$('minutes').textContent=String(m).padStart(2,'0');$('seconds').textContent=String(s).padStart(2,'0');$('targetNote').textContent='Do 24 grudnia, godz. 17:00 · '+t.getFullYear()+'.';}
+$('add').addEventListener('click',()=>{state.events.push({t:Date.now(),delta:1});save();render();if(navigator.vibrate)navigator.vibrate(12);});
+$('minus').addEventListener('click',()=>{for(let i=state.events.length-1;i>=0;i--){if(state.events[i].delta>0){state.events.splice(i,1);save();render();showToast('Cofnięto ostatnie kliknięcie');return;}}if(state.baseline&&state.baseline.count>0){state.baseline.count--;save();render();showToast('Odjęto jedną sztukę');return;}showToast('Licznik jest już na zerze');});
+$('todayBtn').addEventListener('click',()=>showToast('Dzisiaj: '+$('todayCount').textContent+' mandarynek'));
+$('more').addEventListener('click',()=>{historyLimit+=7;renderHistory();});$('less').addEventListener('click',()=>{historyLimit=7;renderHistory();});
+const localISO=d=>new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);$('pastDate').value=localISO(new Date());
+$('savePast').addEventListener('click',()=>{const count=Number.parseInt($('pastCount').value,10),date=$('pastDate').value;if(!Number.isFinite(count)||count<0){showToast('Podaj liczbę 0 lub większą');return;}if(!date){showToast('Wybierz datę i godzinę');return;}const t=new Date(date).getTime();if(!Number.isFinite(t)||t>Date.now()){showToast('Data nie może być z przyszłości');return;}if(!confirm('Zastąpić dotychczasowy licznik wcześniejszymi danymi?'))return;state={events:[],baseline:{count,start:t}};save();render();showToast('Zapisano wcześniejsze dane');});
+function refresh(){state=load();render();countdown();}
+state=load();render();countdown();$('status').textContent='Zapis lokalny aktywny';
+window.addEventListener('pageshow',refresh);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});window.addEventListener('storage',refresh);setInterval(()=>{if(!document.hidden){render();countdown();}},1000);
 })();
-</script>
-</body>
-</html>
+</script></body></html>
