@@ -279,7 +279,21 @@ footer{text-align:center;color:#9db9a5;font-size:11px;margin:22px 8px 0;line-hei
   // Domyślna data w formularzu: teraz, zaokrąglone do minuty.
   const localISO = d => new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,16);
   $('pastDate').value = localISO(new Date());
-  render(); countdown(); setInterval(countdown,1000); setInterval(render,15000);
+
+  // Odtwórz licznik także po ponownym wejściu na stronę lub przywróceniu jej z pamięci Safari.
+  function restoreAndRender() {
+    const restored = load();
+    if (restored && Array.isArray(restored.events)) state = restored;
+    render();
+    countdown();
+  }
+  restoreAndRender();
+  window.addEventListener('pageshow', restoreAndRender);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') restoreAndRender();
+  });
+  setInterval(countdown, 1000);
+  setInterval(() => { if (document.visibilityState === 'visible') render(); }, 15000);
 })();
 </script>
 </body>
