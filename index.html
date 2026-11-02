@@ -61,7 +61,11 @@ details summary{list-style:none;cursor:pointer;font-weight:750;display:flex;just
   </div>
   <div style="height:14px;border-radius:99px;background:#001d1466;overflow:hidden;border:1px solid #ffffff20"><div id="goalBar" style="height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,#f47712,#f4c76b);transition:width .25s"></div></div>
   <p class="small-note" id="goalMessage"></p>
-  <button class="secondary" id="editGoal" style="margin-top:10px">Zmień cel</button>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+    <button class="secondary" id="editGoal">Zmień cel</button>
+    <button class="secondary" id="clearGoal">Usuń cel</button>
+  </div>
+  <p class="small-note" id="goalDaily"></p>
 </div>
 </section>
 <section class="card"><h2 class="section-title">Historia dzienna</h2><div id="history" class="history-list"></div><div class="history-tools"><button class="secondary" id="more">Pokaż starsze dni</button><button class="secondary" id="less">Pokaż mniej</button></div></section>
@@ -105,9 +109,17 @@ function render(){
  $('dailyMessage').textContent=daily===0?'Dzień dopiero się zaczyna — czas na pierwszą mandarynkę! 🍊':daily===1?'Pierwsza dzisiejsza zaliczona! 🍊':daily<5?'Dobry początek, Kubster! 🍊':'Kubster jest dziś na mandarynkowej fali! 🍊';
  if(state.goal && Number(state.goal)>0){
    $('goalSetup').style.display='none';$('goalProgress').style.display='';
-   const goal=Number(state.goal), pct=Math.min(100,Math.round(n/goal*100));
-   $('goalValue').textContent=fmt(goal,0);$('goalPercent').textContent=pct+'%';$('goalBar').style.width=pct+'%';
-   $('goalMessage').textContent=n>=goal?'Cel zaliczony, Kubster! Mandarynkowa legenda. 🏆':'Jeszcze '+fmt(goal-n,0)+' mandarynek do celu. Jedziesz!';
+   const goal=Number(state.goal), remaining=Math.max(0,goal-n);
+   const pct=Math.min(100,(n/goal)*100);
+   const deadline=new Date(new Date().getFullYear(),11,24,17,0,0);
+   if(new Date()>=deadline) deadline.setFullYear(deadline.getFullYear()+1);
+   const daysLeft=Math.max(1,Math.ceil((deadline.getTime()-Date.now())/86400000));
+   const perDay=remaining===0?0:remaining/daysLeft;
+   $('goalValue').textContent=fmt(goal,0);
+   $('goalPercent').textContent=pct.toLocaleString('pl-PL',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+   $('goalBar').style.width=pct+'%';
+   $('goalMessage').textContent=n>=goal?'Cel zaliczony, Kubster! Mandarynkowa legenda. 🏆':'Do końca celu zostało '+fmt(remaining,0)+' mandarynek. Jedziesz!';
+   $('goalDaily').textContent=remaining===0?'Dzienny plan: 0 mandarynek. Cel wykonany!': 'Żeby zdążyć do Wigilii, jedz średnio '+fmt(perDay,1)+' mandarynki dziennie (pozostało '+daysLeft+' dni).';
  } else {$('goalSetup').style.display='';$('goalProgress').style.display='none';}
  renderHistory();
 }
@@ -125,6 +137,10 @@ $('setGoal').addEventListener('click',()=>{
 });
 $('editGoal').addEventListener('click',()=>{
  $('goalInput').value=state.goal||'';$('goalSetup').style.display='';$('goalProgress').style.display='none';$('goalInput').focus();
+});
+$('clearGoal').addEventListener('click',()=>{
+ if(!confirm('Usunąć obecny cel? Licznik i historia mandarynek pozostaną bez zmian.'))return;
+ state.goal=null;save();render();showToast('Cel usunięty. Możesz ustawić nowy! 🍊');
 });
 $('shareReport').addEventListener('click',async()=>{
  const events=allEvents(),now=new Date();
