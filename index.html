@@ -37,6 +37,15 @@ details summary{list-style:none;cursor:pointer;font-weight:750;display:flex;just
 .history-details .history-content{margin-top:16px}
 
 .status{text-align:center;font-size:11px;color:#bfe8b8;margin:12px 0 0}footer{text-align:center;color:#9db9a5;font-size:11px;margin:22px 8px 0;line-height:1.6}.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--cream);color:#173728;padding:11px 16px;border-radius:99px;font-weight:750;font-size:13px;transition:.2s;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Szybkie wielokrotne tapnięcia nie powinny uruchamiać zoomu Safari. */
+button, .mandarin-button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
 </style></head><body><main>
 <header><div class="kicker">Świąteczna misja 2026</div><h1>Licznik mandarynek<br>Kubstera 🍊</h1>
 <p class="subtitle" style="max-width:390px;margin:12px auto 0;line-height:1.55">Tyle lat o tym gadaliśmy, że w końcu zwibecode’owałem z tego konkretną apkę. Teraz już nie ma wymówek, Kubster. 🍊</p>
